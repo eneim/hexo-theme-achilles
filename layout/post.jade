@@ -1,6 +1,7 @@
 extends partial/layout
 
 block meta
+    include mixins/youtube
     if is_post()
         meta(property="og:title" content=page.title)
         meta(property="og:image" content=page.banner)
@@ -17,6 +18,7 @@ block description
 block container
     include mixins/post
     +post(page)
+    include mixins/qrcode
 
 block pagination
     include mixins/paginator

@@ -1,11 +1,11 @@
 mixin postInfo(item)
     header.post-info
-        if is_post()
+        if is_home() || is_post()
           != full_date(item.date, 'll')
         else
           != full_date(item.date, 'MMM DD')
         if item.from && (is_home() || is_post())
-            a.post-from(href=item.from target="_blank" title=item.from) 翻译 · 原文地址
+            a.post-from(href=item.from target="_blank" title=item.from) Translated from
         if is_home() || is_post()
             div.fb-ir-time
                 time.op-modified(dateTime=item.date.toISOString())
@@ -28,12 +28,14 @@ mixin posts()
                     h3.post-subtitle
                         != item.subtitle
                     +postInfo(item)
-                    a.post-banner(href= url_for(item.path))
-                        img(src= item.banner)
+                    - if (item.banner)
+                        a.post-banner(href= url_for(item.path))
+                            img(src= item.banner)
                     .post-content
-                        - var excerpt = item.excerpt.replace(/(<\/\w+>)$/, '...$1')
+                        - var excerpt = item.excerpt ? item.excerpt : truncate(strip_html(item.content), { length: 150, omission: ' ...' })
+                        - excerpt = excerpt.replace(/(<\/\w+>)$/, '...$1')
                         != excerpt
-                    a.read-more(href= url_for(item.path))!= __('Read more...')
+                    a.read-more(href= url_for(item.path))!= __('Read more')
         - })
 
 //- Archive Page
@@ -63,8 +65,9 @@ mixin post(item)
                 h2.post-subtitle
                     != item.subtitle
                 +postInfo(item)
-            .post-banner
-                img(src= item.banner)
+            - if (item.banner)
+                .post-banner
+                    img(src= item.banner)
             .wrap
                 .post-content
                     != item.content

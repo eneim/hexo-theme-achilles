@@ -1,26 +1,19 @@
 menu:
-    Blog: /
+    Home: /
     Archive: /archives/
-    GitHub: https://github.com/geniustanley
+    GitHub: https://github.com/eneim
     Rss: /atom.xml
 
-favicon: /favicon.png
-logo: /favicon.png
+favicon: /img/eneim.ico
+logo: /img/avatar.jpg
 
 # Comment
 # e.g disqus: seansun
-disqus: geniustanley
-duoshuo:
-# gitment: 
-#     owner: geniustanley 
-#     repo: geniustanley.github.io.comments
-#     client_id: 185a79ed82c2ece9b1b9
-#     client_secret: 748a572af2860c92f8da40fbf1f3b3b1fab9fb1a
-    
+disqus: eneim
 
 # Analytics
 # google-analytics:
-ga: UA-91330174-1
+ga: 'UA-72567780-7'
 
 # Copyright Infomation
-startyear: 2017
+startyear: 2016
