@@ -42,7 +42,8 @@
 
     .post-banner {
         img {
-            max-width: 100%;
+            // max-width: 100%;
+            width: 100%;
         }
     }
 }
@@ -302,7 +303,7 @@ pre {
 }
 
 .qrcode {
-    padding-bottom: 30px;
+    padding-bottom: 16px;
     text-align: center;
     border-bottom: 1px dashed color-border;
     canvas {
@@ -314,7 +315,7 @@ pre {
 }
 
 .money-like {
-  padding: 2em 0 2em;
+  padding: 1em 0 1em;
   display: flex;
   justify-content: center;
   margin: auto;

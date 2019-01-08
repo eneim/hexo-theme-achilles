@@ -4,7 +4,7 @@ section.container {
 
 .wrap {
     box-sizing: border-box;
-    padding: 0 10px;
+    padding: 0 12px;
 }
 
 @media screen and (min-width: 700px) {
@@ -46,7 +46,7 @@ section.container {
     }
     .post-content {
         h2, h3, h4, h5, h6 {
-            left: 15px;
+            margin-left: 15px;
         }
     }
     .ds-thread,
