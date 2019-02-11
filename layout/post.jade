@@ -1,12 +1,12 @@
 extends partial/layout
 
 block meta
-    include mixins/youtube
     if is_post()
         meta(property="og:title" content=page.title)
         meta(property="og:image" content=page.banner)
         meta(property="og:description" content=strip_html(page.excerpt).trim())
-    
+    if page.hasYoutubeVideo
+        include mixins/youtube
 
 block site_title
     != page.title + " · " + config.title
@@ -19,6 +19,24 @@ block container
     include mixins/post
     +post(page)
     include mixins/qrcode
+    if page.mathjax
+        script(type='text/x-mathjax-config').
+            MathJax.Hub.Config({
+                tex2jax: {
+                    inlineMath: [ ['$','$'], ["\\\(","\\)"]  ],
+                    processEscapes: true,
+                    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                }
+            });
+        script(type='text/x-mathjax-config').
+            MathJax.Hub.Queue(function() {
+                var all = MathJax.Hub.getAllJax(), i;
+                    for (i=0; i < all.length; i += 1) {
+                        all[i].SourceElement().parentNode.className += ' has-jax';
+                        all[i].SourceElement().parentNode.className.trim();
+                    }
+                });
+        script(async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML")
 
 block pagination
     include mixins/paginator

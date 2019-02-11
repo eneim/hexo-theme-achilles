@@ -1,25 +1,26 @@
-.square-container {
+/* YouTube */
+.ytx-container {
   width: 100%;
 }
 
-.square-container > br {
+.ytx-container > br {
   display: none;
 }
 
-.square {
+.ytx-square {
   width: 100%;
   margin: 0 auto;
   /* max-width: 640px; */
   position: relative;
 }
 
-.square:after {
+.ytx-square:after {
   padding-top: 56.25%;
   display: block;
   content: '';
 }
 
-.square-child {
+.ytx-square-child {
   width: 100%;
   /* max-width: 640px; */
   position: absolute;

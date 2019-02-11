@@ -1,11 +1,12 @@
-.qrcode
-    canvas#share-qrcode
-    p.notice Scan the QR code to share this article
-    script(src="/js/qrious.js")
-    script(async, defer, type='text/javascript').
-      new QRious({element: document.getElementById('share-qrcode'),value: document.location.href});
+//- .qrcode
+//-     canvas#share-qrcode
+//-     p.notice Scan the QR code to share this article
+//-     script(src="/js/qrious.js")
+//-     script(async, defer, type='text/javascript').
+//-       new QRious({element: document.getElementById('share-qrcode'), value: document.location.href});
 
 .money-like
     script(type='text/javascript', src='https://ko-fi.com/widgets/widget_2.js')
     script(type='text/javascript').
-      kofiwidget2.init('Feel good for a Koffee? ^^!', '#6e61ab', 'A342OWW');kofiwidget2.draw();
+      kofiwidget2.init('Send eneim a cup of Koffee? ^^!', '#6e61ab', 'A342OWW');
+      kofiwidget2.draw();

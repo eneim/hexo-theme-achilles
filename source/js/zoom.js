@@ -5,20 +5,21 @@
  * @license MIT
  */
 
-+function ($) { "use strict";
++ function ($) {
+  "use strict";
 
   /**
    * The zoom service
    */
-  function ZoomService () {
-    this._activeZoom            =
-    this._initialScrollPosition =
-    this._initialTouchPosition  =
-    this._touchMoveListener     = null
+  function ZoomService() {
+    this._activeZoom =
+      this._initialScrollPosition =
+      this._initialTouchPosition =
+      this._touchMoveListener = null
 
     this._$document = $(document)
-    this._$window   = $(window)
-    this._$body     = $(document.body)
+    this._$window = $(window)
+    this._$body = $(document.body)
 
     this._boundClick = $.proxy(this._clickHandler, this)
   }
@@ -124,11 +125,11 @@
   /**
    * The zoom object
    */
-  function Zoom (img) {
-    this._fullHeight      =
-    this._fullWidth       =
-    this._overlay         =
-    this._targetImageWrap = null
+  function Zoom(img) {
+    this._fullHeight =
+      this._fullWidth =
+      this._overlay =
+      this._targetImageWrap = null
 
     this._targetImage = img
 
@@ -150,7 +151,7 @@
   }
 
   Zoom.prototype._zoomOriginal = function () {
-    this._targetImageWrap           = document.createElement('div')
+    this._targetImageWrap = document.createElement('div')
     this._targetImageWrap.className = 'zoom-img-wrap'
 
     this._targetImage.parentNode.insertBefore(this._targetImageWrap, this._targetImage)
@@ -160,7 +161,7 @@
       .addClass('zoom-img')
       .attr('data-action', 'zoom-out')
 
-    this._overlay           = document.createElement('div')
+    this._overlay = document.createElement('div')
     this._overlay.className = 'zoom-overlay'
 
     document.body.appendChild(this._overlay)
@@ -172,7 +173,7 @@
   Zoom.prototype._calculateZoom = function () {
     this._targetImage.offsetWidth // repaint before animating
 
-    var originalFullImageWidth  = this._fullWidth
+    var originalFullImageWidth = this._fullWidth
     var originalFullImageHeight = this._fullHeight
 
     var scrollTop = $(window).scrollTop()
@@ -180,9 +181,9 @@
     var maxScaleFactor = originalFullImageWidth / this._targetImage.width
 
     var viewportHeight = ($(window).height() - Zoom.OFFSET)
-    var viewportWidth  = ($(window).width() - Zoom.OFFSET)
+    var viewportWidth = ($(window).width() - Zoom.OFFSET)
 
-    var imageAspectRatio    = originalFullImageWidth / originalFullImageHeight
+    var imageAspectRatio = originalFullImageWidth / originalFullImageHeight
     var viewportAspectRatio = viewportWidth / viewportHeight
 
     if (originalFullImageWidth < viewportWidth && originalFullImageHeight < viewportHeight) {
@@ -200,7 +201,7 @@
     this._targetImage.offsetWidth // repaint before animating
 
     var imageOffset = $(this._targetImage).offset()
-    var scrollTop   = $(window).scrollTop()
+    var scrollTop = $(window).scrollTop()
 
     var viewportY = scrollTop + ($(window).height() / 2)
     var viewportX = ($(window).width() / 2)
@@ -221,15 +222,15 @@
     $(this._targetImage)
       .css({
         '-webkit-transform': targetTransform,
-            '-ms-transform': targetTransform,
-                'transform': targetTransform
+        '-ms-transform': targetTransform,
+        'transform': targetTransform
       })
 
     $(this._targetImageWrap)
       .css({
         '-webkit-transform': imageWrapTransform,
-            '-ms-transform': imageWrapTransform,
-                'transform': imageWrapTransform
+        '-ms-transform': imageWrapTransform,
+        'transform': imageWrapTransform
       })
 
     this._$body.addClass('zoom-overlay-open')
@@ -244,15 +245,15 @@
     $(this._targetImage)
       .css({
         '-webkit-transform': '',
-            '-ms-transform': '',
-                'transform': ''
+        '-ms-transform': '',
+        'transform': ''
       })
 
     $(this._targetImageWrap)
       .css({
         '-webkit-transform': '',
-            '-ms-transform': '',
-                'transform': ''
+        '-ms-transform': '',
+        'transform': ''
       })
 
     if (!$.support.transition) {
@@ -279,8 +280,8 @@
 
   // wait for dom ready (incase script included before body)
   $(function () {
-    $('.post-content img').attr('data-action', 'zoom');	
+    $('.post-content img').attr('data-action', 'zoom');
     new ZoomService().listen()
   })
 
-}(jQuery)
+}(Zepto)
